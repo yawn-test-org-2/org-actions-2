@@ -1,0 +1,46 @@
+name: Reusable Slack Bot PR Workflow
+
+on:
+  workflow_call:
+    inputs:
+      repo_name:
+        description: 'Repository Name'
+        required: true
+        type: string
+      pr_title:
+        description: 'Pull Request Title'
+        required: true
+        type: string
+      pr_url:
+        description: 'Pull Request URL'
+        required: true
+        type: string
+    secrets:
+      slack_channel_id:
+        required: true
+      slack_bot_token:
+        required: true
+
+jobs:
+  reusable-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello message
+        run: |
+          echo "Hello, Reuseable Actions, PR!"
+          echo "Repository Name: ${{ inputs.repo_name }}"
+          echo "Pull Request Title: ${{ inputs.pr_title }}"
+          echo "Pull Request URL: ${{ inputs.pr_url }}"
+      - name: Send Slack notification for dependency PR
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.slack_bot_token }}
+          payload: |
+            channel: ${{ secrets.slack_channel_id }}
+            text: "プルリクエスト: ${{ inputs.repo_name }}"
+            blocks:
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: "${{ inputs.repo_name }}\n${{ inputs.pr_title }}\n${{ inputs.pr_url }}"

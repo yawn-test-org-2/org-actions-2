@@ -1,0 +1,12 @@
+name: Reusable Test Workflow
+
+on:
+  workflow_call:
+    # このワークフローは他のワークフローから呼び出せるように設定
+
+jobs:
+  reusable-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello message
+        run: echo "Hello, Reuseable Actions!" 
