@@ -38,9 +38,21 @@ jobs:
           token: ${{ secrets.slack_bot_token }}
           payload: |
             channel: ${{ secrets.slack_channel_id }}
-            text: "プルリクエスト: ${{ inputs.repo_name }}"
+            text: "Dependabot PR: ${{ inputs.repo_name }}\n${{ inputs.pr_title }}"
             blocks:
               - type: section
                 text:
                   type: mrkdwn
-                  text: "${{ inputs.repo_name }}\n${{ inputs.pr_title }}\n${{ inputs.pr_url }}"
+                  text: "*${{ inputs.repo_name }}*"
+              - type: header
+                text:
+                  type: plain_text
+                  text: "${{ inputs.pr_title }}"
+              - type: actions
+                elements:
+                  - type: button
+                    text:
+                      type: plain_text
+                      text: "View Pull Request"
+                    url: "${{ inputs.pr_url }}"
+              - type: divider
