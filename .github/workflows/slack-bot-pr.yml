@@ -38,18 +38,20 @@ jobs:
           token: ${{ secrets.slack_bot_token }}
           payload: |
             channel: ${{ secrets.slack_channel_id }}
-            text: "プルリクエスト: ${{ inputs.repo_name }}"
-            attachments:
-              - color: "#FFFFFF"
-                blocks:
-                  - type: section
-                    text:
-                      type: mrkdwn
-                      text: "*${{ inputs.repo_name }}*"
-                  - type: context
-                    elements:
-                      - type: mrkdwn
-                        text: "### ${{ inputs.pr_title }}"
-                      - type: mrkdwn
-                        text: "<${{ inputs.pr_url }}|View PR>"
-                  - type: divider
+            text: "Dependabot PR: ${{ inputs.repo_name }}: ${{ inputs.pr_title }}"
+            blocks:
+              - attachments:
+                - color: "#FFFFFF"
+                  blocks:
+                    - type: section
+                      text:
+                        type: mrkdwn
+                        text: "*${{ inputs.repo_name }}*"
+                    - type: context
+                      elements:
+                        - type: mrkdwn
+                          text: "*${{ inputs.pr_title }}*"
+                        - type: 
+                        - type: mrkdwn
+                          text: "<${{ inputs.pr_url }}|View PR>"
+                    - type: divider
