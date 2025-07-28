@@ -48,8 +48,12 @@ jobs:
                       text: "*${{ inputs.repo_name }}*"
                   - type: context
                     elements:
-                      - type: mrkdwn
-                        text: "*${{ inputs.pr_title }}*"
-                      - type: mrkdwn
-                        text: "<${{ inputs.pr_url }}|View PR>"
+                      - type: section
+                        text:
+                          type: mrkdwn
+                          text: "*${{ inputs.pr_title }}*"
+                      - type: section
+                        text:
+                          type: mrkdwn
+                          text: "<${{ inputs.pr_url }}|View PR>"
                   - type: divider
