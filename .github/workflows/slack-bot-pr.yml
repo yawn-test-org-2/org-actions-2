@@ -39,7 +39,7 @@ jobs:
           payload: |
             {
               "channel": "${{ secrets.slack_channel_id }}",
-              "text": "PR: ${{ inputs.pr_title }}",
+              "text": "PR: ${{ inputs.repo_name }}: ${{ inputs.pr_title }}",
               "attachments": [
                 {
                   "color": "#FFFFFF",
