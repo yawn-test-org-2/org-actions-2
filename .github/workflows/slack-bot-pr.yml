@@ -40,38 +40,34 @@ jobs:
             {
               "channel": "${{ secrets.slack_channel_id }}",
               "text": "PR: ${{ inputs.pr_title }}",
-              "blocks": [
-                "attachments": [
-                  {
-                    "color": "#FFFFFF",
-                    "blocks": [
-                      {
-                        "type": "section",
-                        "text": {
-                          "type": "mrkdwn",
-                          "text": "*${{ inputs.repo_name }}*"
-                        }
-                      },
-                      {
-                        "type": "section",
-                        "text": {
-                          {
-                            "type": "mrkdwn",
-                            "text": "*${{ inputs.pr_title }}*"
-                          },
-                        },
-                        "text": {
-                          {
-                            "type": "mrkdwn",
-                            "text": "<${{ inputs.pr_url }}|View PR>"
-                          }
-                        },
-                      },
-                      {
-                        "type": "divider"
+              "attachments": [
+                {
+                  "color": "#FFFFFF",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*${{ inputs.repo_name }}*"
                       }
-                    ]
-                  }
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*${{ inputs.pr_title }}*"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "  |  <${{ inputs.pr_url }}|View PR>"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "divider"
+                    }
+                  ]
                 }
               ]
             }
