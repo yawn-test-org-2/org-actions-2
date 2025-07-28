@@ -39,13 +39,35 @@ jobs:
           payload: |
             {
               "channel": "${{ secrets.slack_channel_id }}",
-              "blocks": [
+              "text": "PR: ${{ inputs.pr_title }}",
+              "attachments": [
                 {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "新しいプルリクエストが作成されました :new:"
-                  }
-                },
+                  "color": "#FFFFFF",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "*${{ inputs.repo_name }}*"
+                      }
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*${{ inputs.pr_title }}*"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "  |  <${{ inputs.pr_url }}|View PR>"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "divider"
+                    }
+                  ]
+                }
               ]
             }
