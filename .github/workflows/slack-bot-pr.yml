@@ -38,6 +38,7 @@ jobs:
           token: ${{ secrets.slack_bot_token }}
           payload: |
             {
+              "channel": "${{ secrets.slack_channel_id }}",
               "type": "section",
               "text": {
                 "type": "mrkdwn",
