@@ -53,7 +53,7 @@ jobs:
                   "elements": [
                     {
                       "type": "mrkdwn",
-                      "text": "*${{ inputs.pr_title }}*"
+                      "text": ":white_circle: *${{ inputs.pr_title }}*"
                     },
                     {
                       "type": "mrkdwn",
