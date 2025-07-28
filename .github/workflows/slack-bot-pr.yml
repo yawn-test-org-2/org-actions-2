@@ -40,34 +40,30 @@ jobs:
             {
               "channel": "${{ secrets.slack_channel_id }}",
               "text": "PR: ${{ inputs.repo_name }}\n ${{ inputs.pr_title }}",
-              "attachments": [
+              "blocks": [
                 {
-                  "color": "#FFFFFF",
-                  "blocks": [
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*${{ inputs.repo_name }}*"
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
                     {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "*${{ inputs.repo_name }}*"
-                      }
+                      "type": "mrkdwn",
+                      "text": ":white_circle: *${{ inputs.pr_title }}*"
                     },
                     {
-                      "type": "context",
-                      "elements": [
-                        {
-                          "type": "mrkdwn",
-                          "text": "*${{ inputs.pr_title }}*"
-                        },
-                        {
-                          "type": "mrkdwn",
-                          "text": "<${{ inputs.pr_url }}|View PR>"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "divider"
+                      "type": "mrkdwn",
+                      "text": "<${{ inputs.pr_url }}|View PR>"
                     }
                   ]
+                },
+                {
+                  "type": "divider"
                 }
               ]
             }
+                
