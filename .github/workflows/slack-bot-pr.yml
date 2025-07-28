@@ -37,23 +37,10 @@ jobs:
           method: chat.postMessage
           token: ${{ secrets.slack_bot_token }}
           payload: |
-            channel: ${{ secrets.slack_channel_id }}
-            text: "PR: ${{ inputs.repo_name }}"
-            attachments:
-              - color: "#FFFFFF"
-                blocks:
-                  - type: section
-                    text:
-                      type: mrkdwn
-                      text: "*${{ inputs.repo_name }}*"
-                  - type: context
-                    elements:
-                      - type: section
-                        text:
-                          type: mrkdwn
-                          text: "*${{ inputs.pr_title }}*"
-                      - type: section
-                        text:
-                          type: mrkdwn
-                          text: "<${{ inputs.pr_url }}|View PR>"
-                  - type: divider
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "PR json test"
+              }
+            }
