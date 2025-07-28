@@ -38,7 +38,7 @@ jobs:
           token: ${{ secrets.slack_bot_token }}
           payload: |
             channel: ${{ secrets.slack_channel_id }}
-            text: "プルリクエスト: ${{ inputs.repo_name }}"
+            text: "PR: ${{ inputs.repo_name }}"
             attachments:
               - color: "#FFFFFF"
                 blocks:
@@ -49,7 +49,7 @@ jobs:
                   - type: context
                     elements:
                       - type: mrkdwn
-                        text: "### ${{ inputs.pr_title }}"
+                        text: "*${{ inputs.pr_title }}*"
                       - type: mrkdwn
                         text: "<${{ inputs.pr_url }}|View PR>"
                   - type: divider
