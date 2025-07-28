@@ -39,9 +39,13 @@ jobs:
           payload: |
             {
               "channel": "${{ secrets.slack_channel_id }}",
-              "type": "section",
-              "text": {
-                "type": "mrkdwn",
-                "text": "PR json test"
-              }
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "新しいプルリクエストが作成されました :new:"
+                  }
+                },
+              ]
             }
