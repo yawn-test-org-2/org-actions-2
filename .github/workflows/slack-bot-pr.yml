@@ -38,6 +38,7 @@ jobs:
           token: ${{ secrets.slack_bot_token }}
           payload: |
             channel: ${{ secrets.slack_channel_id }}
+            text: "プルリクエスト: ${{ inputs.repo_name }}"
             attachments:
               - color: "#FFFFFF"
                 blocks:
