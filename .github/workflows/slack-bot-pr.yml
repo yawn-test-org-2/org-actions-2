@@ -43,23 +43,23 @@ jobs:
               "blocks": [
                 {
                   "type": "section",
-                  "text": {
+                  "fields": [
+                    {
                     "type": "mrkdwn",
                     "text": "*${{ inputs.repo_name }}*"
-                  }
-                },
-                {
-                  "type": "context",
-                  "elements": [
-                    {
-                      "type": "mrkdwn",
-                      "text": ":white_circle: *${{ inputs.pr_title }}*"
                     },
                     {
                       "type": "mrkdwn",
                       "text": "<${{ inputs.pr_url }}|View PR>"
                     }
                   ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*${{ inputs.pr_title }}*"
+                  }
                 },
                 {
                   "type": "divider"
