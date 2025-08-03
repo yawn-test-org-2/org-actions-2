@@ -40,6 +40,7 @@ jobs:
             {
               "channel": "${{ secrets.slack_channel_id }}",
               "text": "PR: ${{ inputs.repo_name }}\n ${{ inputs.pr_title }}",
+              "unfurl_links": false,
               "blocks": [
                 {
                   "type": "section",
@@ -66,4 +67,3 @@ jobs:
                 }
               ]
             }
-                
